@@ -121,7 +121,6 @@ def workload_list(request):
                     if flag:
                         pdict[eledate][eleperson['type']].append({'type': elehours, 'value': eleperson['value']})
 
-    print(pdict)
     context = {
         'wdict': wdict,
         'pdict': pdict,
