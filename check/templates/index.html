@@ -12,11 +12,15 @@
                 maxi = data[i].value
             }
         }
-        maxi = maxi * 1.2
+        maxi = maxi * 1.2;
+        jheight = 800;
+        if (Object.keys(data).length > 20){
+            jheight = Object.keys(data).length * 35;
+        }
         const chart = new G2.Chart({
             container: 'container',
             forceFit: true,
-            height: 800,
+            height: jheight ,
             padding: [ 20, 40, 50, 124 ]
         });
         chart.source(data, {
@@ -118,11 +122,12 @@
 	<div id="contentLeft">
 		<ul id="leftNavigation">
 
-            {% for dates, infos in wdict.items %}
+{#            {% for dates, infos in wdict.items %}#}
+            {% for dates, infos in wdict %}
             <li>
                 <a onclick="loadChart({{ infos.days }}, '{{ dates }}')"> {{ dates }} </a>
                 <ul>
-                    {% for key,values in infos.hours.items %}
+                    {% for key,values in infos.hours %}
                         <li>
                             <a onclick="loadChart({{ values }}, '{{ key }}')">{{ key }}</a>
                         </li>

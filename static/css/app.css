@@ -41,7 +41,19 @@ h1 {
 #leftNavigation, #leftNavigation li ul {
   list-style: none;
   padding: 0;
+  overflow:scroll;
+  height: 100%;
+  overflow-x:hidden;
 }
+
+#leftNavigation::-webkit-scrollbar {
+    display: none;
+}
+
+#leftNavigation li ul::-webkit-scrollbar {
+    display: none;
+}
+
 #leftNavigation li a {
   font-size: 0.875rem;
   display: block;

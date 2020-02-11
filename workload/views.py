@@ -120,10 +120,11 @@ def workload_list(request):
                             flag = False
                     if flag:
                         pdict[eledate][eleperson['type']].append({'type': elehours, 'value': eleperson['value']})
-
+    for eleday in wdict:
+        wdict[eleday]['hours'] = sorted(wdict[eleday]['hours'].items(), key=lambda x: x[0], reverse=False)
+    wdict = sorted(wdict.items(), key=lambda x: x[0], reverse=True)
     context = {
         'wdict': wdict,
         'pdict': pdict,
     }
-
     return render(request, 'index.html', context=context)
